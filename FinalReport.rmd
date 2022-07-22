@@ -1,15 +1,9 @@
 ---
 title: "GSS challange"
-author: "Put your name here!"
-date: "put the date here"
+author: "Taelynn Condoll"
+date: "Summer 2022"
 output: html_document
 ---
-
-
-
-
-
-
 
 ```{r include=FALSE,echo=FALSE}
 source(file="fisherXY.R")
@@ -30,9 +24,16 @@ mydata <- na.omit(mydata)
 Is attitude toward capitol punishment (cappun) independent of race (race)?
 If not, then whose view differs from whom??
 
+$H_0$:The attitude toward capital punishment is independent of someones race.
+
+$H_A$:The attitude toward capital punishment is dependent of someones race.
+
 # Methods
 
 <!--Decide on your methods:  use "variable analysis" or other appropriate descriptors.  Make sure to choose at least one graphical method and at least one numerical method. Discuss what data manipulations may be needed for example subsetting or other binning procedures and what sort of graphical displays and inferential tools will be used!-->
+
+Both race and cappun are categorical variables so analyses technique CAT~CAT, 
+with a bar plot, summery is a cross table, inference is chi-squared test.
 
 # Results
 
@@ -63,14 +64,13 @@ basicCC <- ggplot(dd2,aes(x=race,y=prcnt*100,fill=cappun))
 basicCC + geom_bar(stat="identity", position = "dodge")
 ```
 
-
+According to the bar plot, the race of a person is affected by the way they 
+view capital punishment. The graph shows that white people prefer the capital 
+punishment and black people strongly disagree with it.
 
 ### Numerical Descriptive Results
 
 <!--Numerical results go here. Use the numerical results to describe the patterns if any that exist in the data as focused toward the research question!-->
-
-
-
 
 ## Now with More data
 
@@ -80,6 +80,10 @@ rowPerc(table2)
 colPerc(table2)
 ```
 
+From the numerical data, white people strongly agree with the death 
+sentence, others are slightly in favor of the death sentence and black people 
+are lightly against the death sentence. This shows that the attitude 
+towards the death sentence vary through race.
 
 ## Inferential Results
 
@@ -101,7 +105,10 @@ fisher.test(table2)
 fisherXY(mydata$cappun,mydata$race)
 ```
  
+The p value of both chunks is .05. Therefore we can reject the null hypothesis. Also on the fisher exact test the p value is less then .05 as well.
 
 # Discussion and Conclusion
 
 <!--Discussion and conclusion here.  If you found a relationship be sure to consider whether the relationship occurs because one of the variavbles causes the other, or whether they perhasps are related for some other reason.  Watch the chapter 6 videos from the GeorgeTown videos collection.!-->
+
+The question was "Is attitude toward capital punishment independent of race?" Through the research provided we can conclude that the race of a person is dependent on their opinion on capital punishment. This was proved with a chi squared test as well as a fisher exact test, as well as a bar plot to depict the level of agreement a white person has on the death sentence then that of other people of color.
